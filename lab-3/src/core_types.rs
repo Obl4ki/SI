@@ -1,0 +1,1 @@
+pub(crate) type Queen = u8;
