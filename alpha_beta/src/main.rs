@@ -118,63 +118,6 @@ fn min_max_with_alpha_beta_pruning(
     (v, history)
 }
 
-// fn max_value(node: Board, alpha: f32, beta: f32, mut history: History) -> (f32, History) {
-//     history.add(node.clone(), ProcessingState::Pending);
-
-//     let end_winner = game_score(&node);
-//     if end_winner != PlayerMark::N {
-//         let v = match end_winner {
-//             PlayerMark::X => -1.,
-//             PlayerMark::O => 1.,
-//             PlayerMark::N => 0.,
-//         };
-
-//         return (v, history);
-//     }
-//     let mut v = -f32::INFINITY;
-//     for child in get_children(&node, PlayerMark::O) {
-//         let (descendant_v, mut h) = min_value(child, alpha, beta, history.clone());
-
-//         v = f32::max(descendant_v, v);
-//         let alpha = f32::max(alpha, v);
-//         if alpha >= beta {
-//             h.add(node.clone(), ProcessingState::AlphaBetaShortcut(AlphaBetaState { alpha, beta, v }));
-
-//             return (v, h);
-//         }
-//     }
-
-//     (v, history)
-// }
-
-// fn min_value(node: Board, alpha: f32, beta: f32, mut history: History) -> (f32, History) {
-//     history.add(node.clone(), ProcessingState::Pending);
-
-//     let end_winner = game_score(&node);
-//     if end_winner != PlayerMark::N {
-//         let v = match end_winner {
-//             PlayerMark::X => -1.,
-//             PlayerMark::O => 1.,
-//             PlayerMark::N => 0.,
-//         };
-
-//         return (v, history);
-//     }
-//     let mut v = f32::INFINITY;
-//     for child in get_children(&node, PlayerMark::X) {
-//         let (descendant_v, mut h) = max_value(child, alpha, beta, history.clone());
-//         v = f32::min(descendant_v, v);
-//         let beta = f32::min(beta, v);
-
-//         if alpha >= beta {
-//             h.add(node.clone(), ProcessingState::AlphaBetaShortcut(AlphaBetaState { alpha, beta, v }));
-
-//             // println!("Alpha beta shortcut: {alpha} {beta} {v}");
-//             return (v, h);
-//         }
-//     }
-//     (v, history)
-// }
 
 fn get_children(node: &Board, player_mark: PlayerMark) -> Vec<Board> {
     let mut children = vec![];
